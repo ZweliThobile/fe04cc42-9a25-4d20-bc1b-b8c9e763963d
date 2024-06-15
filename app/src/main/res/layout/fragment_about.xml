@@ -2,7 +2,22 @@
 <androidx.core.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:paddingHorizontal="5dp"
     xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        >
+
+        <androidx.appcompat.widget.LinearLayoutCompat
+            android:id="@+id/profile_container"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/padding_normal"
+            android:paddingHorizontal="@dimen/padding_small"/>
 
     <androidx.appcompat.widget.LinearLayoutCompat
         android:id="@+id/container"
@@ -10,10 +25,12 @@
         app:showDividers="beginning|middle|end"
         app:divider="@drawable/ic_filter"
         android:layout_width="match_parent"
-        android:clipChildren="false"
         android:clipToPadding="false"
         android:layout_height="wrap_content"
         android:paddingHorizontal="@dimen/padding_normal"
         android:orientation="vertical" />
+
+
+   </LinearLayout>
 
 </androidx.core.widget.NestedScrollView>

@@ -56,12 +56,12 @@ class QuestionCardView @JvmOverloads constructor(
     private fun onAnswerClick(view: View) {
         if (!view.isSelected) {
             binding.answers.children.filter { it.isSelected }.forEach {
-                it.isSelected = false
+                it.isSelected = true
             }
         }
     }
 
     private fun setSelection() {
-
+        //binding.answers.isSelected.
     }
 }

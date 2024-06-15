@@ -9,6 +9,7 @@ import com.glucode.about_you.R
 import com.glucode.about_you.databinding.FragmentEngineersBinding
 import com.glucode.about_you.engineers.models.Engineer
 import com.glucode.about_you.mockdata.MockData
+import java.util.Collections
 
 class EngineersFragment : Fragment() {
     private lateinit var binding: FragmentEngineersBinding
@@ -20,7 +21,7 @@ class EngineersFragment : Fragment() {
     ): View {
         binding = FragmentEngineersBinding.inflate(inflater, container, false)
         setHasOptionsMenu(true)
-        setUpEngineersList(MockData.engineers)
+        setUpEngineersList(MockData.engineers,"")
         return binding.root
     }
 
@@ -31,18 +32,43 @@ class EngineersFragment : Fragment() {
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         if (item.itemId == R.id.action_years) {
+            setUpEngineersList(MockData.engineers,"years")
             return true
+        }else if(item.itemId == R.id.action_bugs){
+            setUpEngineersList(MockData.engineers,"bugs")
+            return true;
+        }else if(item.itemId == R.id.action_coffees){
+            setUpEngineersList(MockData.engineers,"coffees")
+            return true;
         }
         return super.onOptionsItemSelected(item)
     }
 
-    private fun setUpEngineersList(engineers: List<Engineer>) {
-        binding.list.adapter = EngineersRecyclerViewAdapter(engineers) {
+    private fun setUpEngineersList(engineers: List<Engineer>,orderBy : String) {
+
+        var newList : List<Engineer> = listOf()
+
+
+
+        when(orderBy){
+           "years"->
+           newList = engineers.sortedBy { it.quickStats.years }
+               "coffees"->
+                   newList = engineers.sortedBy { it.quickStats.coffees }
+            "bugs"->
+                newList = engineers.sortedBy { it.quickStats.bugs }
+            ""->
+                newList = engineers
+        }
+
+        binding.list.adapter = EngineersRecyclerViewAdapter(newList) {
             goToAbout(it)
         }
         val dividerItemDecoration = DividerItemDecoration(requireContext(), DividerItemDecoration.VERTICAL)
         binding.list.addItemDecoration(dividerItemDecoration)
     }
+
+
 
     private fun goToAbout(engineer: Engineer) {
         val bundle = Bundle().apply {

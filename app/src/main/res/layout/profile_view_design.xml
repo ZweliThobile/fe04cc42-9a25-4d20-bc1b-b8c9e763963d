@@ -1,0 +1,135 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="125dp"
+    android:id="@+id/profile_view"
+    android:padding="10dp"
+    android:background="@color/black">
+
+        <ImageView
+            android:layout_width="95dp"
+            android:layout_height="match_parent"
+            android:background="@color/white"
+            android:src="@drawable/ic_person"
+            android:layout_marginEnd="15dp"
+            android:id="@+id/profile_image"/>
+
+        <com.google.android.material.textview.MaterialTextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Engineer Name"
+            style="@style/Material.Body1.Medium.Light"
+            android:layout_toEndOf="@id/profile_image"
+            android:textColor="@color/white"
+            android:id="@+id/engineer_name"
+            android:textStyle="bold"
+            android:textSize="20sp"/>
+
+        <com.google.android.material.textview.MaterialTextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/engineer_name"
+            android:text="Job title"
+            android:layout_toEndOf="@id/profile_image"
+            android:textSize="14sp"
+            android:id="@+id/engineer_job_title"
+            android:textColor="@color/white"/>
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_toEndOf="@+id/profile_image"
+            android:layout_alignParentBottom="true"
+            android:layout_marginTop="@dimen/margin_normal"
+            android:background="@drawable/profile_stats_background"
+                android:orientation="horizontal">
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="50dp"
+                    android:layout_weight="1"
+                        >
+
+                        <com.google.android.material.textview.MaterialTextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                                android:text="Years"
+                            android:id="@+id/years_heading"
+                                android:layout_centerHorizontal="true"
+                                android:textColor="@color/black"
+                                android:textSize="12sp"/>
+
+                        <com.google.android.material.textview.MaterialTextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                                android:text="6"
+                            android:id="@+id/num_years"
+                                android:layout_below="@+id/years_heading"
+                                android:layout_centerHorizontal="true"
+                                android:textColor="@color/black"
+                                android:textSize="20sp"
+                                android:textStyle="bold"/>
+
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="50dp"
+                    android:layout_weight="1"
+                    >
+
+                        <com.google.android.material.textview.MaterialTextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Coffees"
+                            android:id="@+id/coffees_heading"
+                            android:layout_centerHorizontal="true"
+                            android:textColor="@color/black"
+                            android:textSize="12sp"/>
+
+                        <com.google.android.material.textview.MaterialTextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="6"
+                            android:layout_below="@+id/coffees_heading"
+                            android:layout_centerHorizontal="true"
+                            android:textColor="@color/black"
+                            android:id="@+id/num_coffees"
+                            android:textSize="20sp"
+                            android:textStyle="bold"/>
+
+
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="50dp"
+                    android:layout_weight="1"
+                    >
+
+                        <com.google.android.material.textview.MaterialTextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Bugs"
+                            android:id="@+id/bugs_heading"
+                            android:layout_centerHorizontal="true"
+                            android:textColor="@color/black"
+                            android:textSize="12sp"/>
+
+                        <com.google.android.material.textview.MaterialTextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:id="@+id/num_bugs"
+                            android:text="6"
+                            android:layout_below="@+id/bugs_heading"
+                            android:layout_centerHorizontal="true"
+                            android:textColor="@color/black"
+                            android:textSize="20sp"
+                            android:textStyle="bold"/>
+
+                </RelativeLayout>
+
+        </LinearLayout>
+
+</RelativeLayout>
