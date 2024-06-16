@@ -71,6 +71,7 @@ class EngineersFragment : Fragment() {
     private fun goToAbout(engineer: Engineer) {
         val bundle = Bundle().apply {
             putString("name", engineer.name)
+
         }
         findNavController().navigate(R.id.action_engineersFragment_to_aboutFragment, bundle)
     }
