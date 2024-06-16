@@ -49,7 +49,6 @@ class EngineersFragment : Fragment() {
         var newList : List<Engineer> = listOf()
 
 
-
         when(orderBy){
            "years"->
            newList = engineers.sortedBy { it.quickStats.years }
