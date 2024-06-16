@@ -65,14 +65,11 @@ class EngineersFragment : Fragment() {
         binding.list.addItemDecoration(dividerItemDecoration)
     }
 
-
-
     private fun goToAbout(engineer: Engineer) {
         val bundle = Bundle().apply {
             putString("name", engineer.name)
         }
         findNavController().navigate(R.id.action_engineersFragment_to_aboutFragment, bundle)
     }
-
 
 }

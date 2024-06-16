@@ -39,8 +39,6 @@ class AboutFragment : Fragment() {
         val engineerName = arguments?.getString("name")
         val engineer = MockData.engineers.first { it.name == engineerName }
 
-
-
         engineer.questions.forEach { question ->
             val questionView = QuestionCardView(requireContext())
             questionView.title = question.questionText
@@ -50,7 +48,6 @@ class AboutFragment : Fragment() {
 
             binding.container.addView(questionView)
         }
-
         //  binding.profileContainer.
     }
 
@@ -65,22 +62,13 @@ class AboutFragment : Fragment() {
         profileView.engineerNumberOfYears = engineer.quickStats.years
         profileView.engineerNumberOfBugs = engineer.quickStats.bugs
 
-
-        this.getActivity()?.let {
-            profileView.setUpProfileImage(it)
-            profileView.setProfileImageListener { r1 ->
-                profileView.engineerProfileImage = r1
-
-                var localDB : LocalRoom = LocalRoom(requireContext())
-                localDB.saveImage(engineer,uriToBase64(context,r1))
-
-            }
-
-
-
+        profileView.setUpProfileImage()
+        profileView.setProfileImageListener { r1 ->
+            profileView.engineerProfileImage = r1
+            var localDB: LocalRoom = LocalRoom(requireContext())
+            localDB.saveImage(engineer, uriToBase64(context, r1))
 
         }
-
 
         binding.profileContainer.addView(profileView)
     }
@@ -108,6 +96,5 @@ class AboutFragment : Fragment() {
         }
         return null
     }
-
 
 }

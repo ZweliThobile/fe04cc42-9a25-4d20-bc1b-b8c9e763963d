@@ -62,6 +62,5 @@ class QuestionCardView @JvmOverloads constructor(
     }
 
     private fun setSelection() {
-        //binding.answers.isSelected.
     }
 }

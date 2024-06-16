@@ -19,7 +19,6 @@ import com.glucode.about_you.service.LocalRoom
 class ProfileView @JvmOverloads
 
 constructor(
-
     context: Context,
     fragment: Fragment,
     attrs: AttributeSet? = null,
@@ -31,7 +30,6 @@ constructor(
 
     var imageResultListener: ((Uri?) -> Unit)? = null
     val photoChooserLauncher: ActivityResultLauncher<Intent>
-
 
     init {
         radius = resources.getDimension(R.dimen.corner_radius_normal);
@@ -64,13 +62,11 @@ constructor(
             binding.numYears.text = years.toString()
         }
 
-
     var engineerNumberOfCoffees: Int? = null
         set(coffees) {
             field = coffees
             binding.numCoffees.text = coffees.toString()
         }
-
 
     var engineerNumberOfBugs: Int? = null
         set(bugs) {
@@ -82,17 +78,10 @@ constructor(
          set(image) {
              field = image
              var local:LocalRoom = LocalRoom(context)
-
-
              binding.profileImage.setImageURI(image)
          }
 
-
-
-     fun setUpProfileImage(activity: Activity) {
-
-//         var imageResultListener: ((String) -> Unit)? = null
-
+     fun setUpProfileImage() {
         binding.profileImage.setOnClickListener(OnClickListener {
 
             val profilePhoto =
@@ -100,10 +89,7 @@ constructor(
 
             photoChooserLauncher.launch(profilePhoto)
 
-
-
         })
-
     }
 
     fun setProfileImageListener(listener: (Uri?) -> Unit) {
@@ -116,10 +102,6 @@ constructor(
         binding.profileImage.setImageURI(imageUri)
         imageResultListener?.invoke(imageUri)
     }
-
-
-    
-
 
  }
 
