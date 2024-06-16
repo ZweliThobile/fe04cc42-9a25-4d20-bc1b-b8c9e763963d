@@ -59,7 +59,7 @@ class EngineersFragment : Fragment() {
                 newList = engineers
         }
 
-        binding.list.adapter = EngineersRecyclerViewAdapter(newList) {
+        binding.list.adapter = EngineersRecyclerViewAdapter(newList,context) {
             goToAbout(it)
         }
         val dividerItemDecoration = DividerItemDecoration(requireContext(), DividerItemDecoration.VERTICAL)
@@ -71,7 +71,6 @@ class EngineersFragment : Fragment() {
     private fun goToAbout(engineer: Engineer) {
         val bundle = Bundle().apply {
             putString("name", engineer.name)
-
         }
         findNavController().navigate(R.id.action_engineersFragment_to_aboutFragment, bundle)
     }
