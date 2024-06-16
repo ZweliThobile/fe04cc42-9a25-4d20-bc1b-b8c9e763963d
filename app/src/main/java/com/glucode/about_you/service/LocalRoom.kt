@@ -13,10 +13,10 @@ class LocalRoom(context: Context?) {
 
     private val sharedPreferences : SharedPreferences = context!!.getSharedPreferences("MyRoom",Context.MODE_PRIVATE)
 private val context : Context? = context
-    fun saveImage(engineer: Engineer,uri: Uri?){
+    fun saveImage(engineer: Engineer,uri: String?){
         var engineerJson : String = Gson().toJson(engineer)
         val myKey = sharedPreferences.edit()
-        myKey.putString(engineerJson,uriToBase64(context,uri))
+        myKey.putString(engineerJson,uri)
         myKey.apply()
     }
 

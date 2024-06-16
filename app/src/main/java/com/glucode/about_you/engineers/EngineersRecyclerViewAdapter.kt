@@ -2,7 +2,6 @@ package com.glucode.about_you.engineers
 
 import android.content.Context
 import android.graphics.BitmapFactory
-import android.net.Uri
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
@@ -42,12 +41,12 @@ class EngineersRecyclerViewAdapter(
             val profileImage :String? = localDB.getImage(engineer)
            var num : Int = profileImage!!.length
 
-            if(profileImage!=null||num>1){
+            if(profileImage!=null&&num>1){
                 val myByte = Base64.decode(profileImage,Base64.DEFAULT)
                 val myBitMap = BitmapFactory.decodeByteArray(myByte,0,myByte.size)
                 binding.profileImage.setImageBitmap(myBitMap)
             }else{
-                binding.profileImage.setImageDrawable(context?.getDrawable(R.drawable.ic_person))
+                binding.profileImage.setImageDrawable(context?.getDrawable(R.drawable.baseline_person_24))
             }
 
         }

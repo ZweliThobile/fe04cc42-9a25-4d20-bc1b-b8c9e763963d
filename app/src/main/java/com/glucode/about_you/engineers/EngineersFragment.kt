@@ -9,7 +9,6 @@ import com.glucode.about_you.R
 import com.glucode.about_you.databinding.FragmentEngineersBinding
 import com.glucode.about_you.engineers.models.Engineer
 import com.glucode.about_you.mockdata.MockData
-import java.util.Collections
 
 class EngineersFragment : Fragment() {
     private lateinit var binding: FragmentEngineersBinding
@@ -44,7 +43,7 @@ class EngineersFragment : Fragment() {
         return super.onOptionsItemSelected(item)
     }
 
-    private fun setUpEngineersList(engineers: List<Engineer>,orderBy : String) {
+     fun setUpEngineersList(engineers: List<Engineer>,orderBy : String) {
 
         var newList : List<Engineer> = listOf()
 
@@ -74,4 +73,6 @@ class EngineersFragment : Fragment() {
         }
         findNavController().navigate(R.id.action_engineersFragment_to_aboutFragment, bundle)
     }
+
+
 }

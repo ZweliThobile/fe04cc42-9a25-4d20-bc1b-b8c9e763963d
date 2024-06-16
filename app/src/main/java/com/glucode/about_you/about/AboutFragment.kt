@@ -1,6 +1,9 @@
 package com.glucode.about_you.about
 
+import android.content.Context
+import android.net.Uri
 import android.os.Bundle
+import android.util.Base64
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -10,6 +13,8 @@ import com.glucode.about_you.about.views.QuestionCardView
 import com.glucode.about_you.databinding.FragmentAboutBinding
 import com.glucode.about_you.mockdata.MockData
 import com.glucode.about_you.service.LocalRoom
+import java.io.ByteArrayOutputStream
+import java.io.InputStream
 
 class AboutFragment : Fragment() {
     private lateinit var binding: FragmentAboutBinding
@@ -65,17 +70,43 @@ class AboutFragment : Fragment() {
             profileView.setUpProfileImage(it)
             profileView.setProfileImageListener { r1 ->
                 profileView.engineerProfileImage = r1
-             var localDB : LocalRoom = LocalRoom(requireContext())
-                localDB.saveImage(engineer,r1)
 
+                var localDB : LocalRoom = LocalRoom(requireContext())
+                localDB.saveImage(engineer,uriToBase64(context,r1))
 
             }
+
+
 
 
         }
 
 
         binding.profileContainer.addView(profileView)
+    }
+
+    fun uriToBase64(context: Context?, uri: Uri?): String? {
+        var inputStream: InputStream? = null
+        try {
+            inputStream = uri?.let { context?.contentResolver?.openInputStream(it) }
+            val byteArrayOutputStream = ByteArrayOutputStream()
+            val buffer = ByteArray(1024)
+            var len: Int
+            while (inputStream?.read(buffer).also { len = it!! } != -1) {
+                byteArrayOutputStream.write(buffer, 0, len)
+            }
+            val data = byteArrayOutputStream.toByteArray()
+            return Base64.encodeToString(data, Base64.DEFAULT)
+        } catch (e: Exception) {
+            e.printStackTrace()
+        } finally {
+            try {
+                inputStream?.close()
+            } catch (e: Exception) {
+                e.printStackTrace()
+            }
+        }
+        return null
     }
 
 
